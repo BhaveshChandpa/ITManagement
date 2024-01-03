@@ -12,69 +12,78 @@ $i = 0;
 
 
 <div class="container pt-5 ">
-
+  
 
   <nav class="navbar navbar-expand-sm bg-light sidebar">
  
     
        
         <a class="btn btn-primary" role="button" href="{{ route('nvr.create') }}">Do Complaint</a>
-      
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <a class="btn btn-secondary"  role="button" href="{{ route('nvr.index')}}">Complainted</a>
-      
-        {{-- <a class="btn btn-success"  role="button" href="{{ route('export.complaints') }}"> Export Complaint Data </a> --}}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-success"  role="button" href="{{ route('nvr.upload') }}"> Import Complaint Data </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-success"  role="button" href="{{ route('export.nvrs') }}"> Export Complaint Data </a>
        
        
    
   </nav> 
 
-{{-- 
+  <br>
 
-<table class="table table-bordered table-hover  table-dark text-center ">
+
+
+<table class="table table-bordered  table-striped-columns">
     
         
   
-    <thead>
+    <thead class="text-center">
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">Department</th>
-        <th scope="col">Problem</th>
-        <th scope="col">Types Of Maintenance</th>
-        <th scope="col">Complaint Date</th>
-        <th scope="col">Complaint By</th>
-        <th scope="col">Maintenance Require</th>
-        <th scope="col">Edp Supervisor</th>
-        <th scope="col">Complainted By</th>
-        <th scope="col">Completed At</th>
+        <th scope="col">Location</th>
+        <th scope="col">IP</th>
+        <th scope="col">Channel</th>
+        <th scope="col">HDD</th>
+        <th scope="col">Storage</th>
+        <th scope="col">2 TB</th>
+        <th scope="col">6 TB</th>
+        <th scope="col">8 TB</th>
+        <th scope="col">10 TB</th>
         <th scope="col">Remark</th>
-        <th scope="col">Action</button></th>
+        <th  scope="col">Action</button></th>
         
       </tr>
     </thead>
-    @foreach ($complaints as $complaint)
+    @foreach ($nvr as $nvr)
     <tbody>
-      <tr>
+      <tr class="text-center">
         <th scope="row">{{ ++$i }}</th>
-        <td>{{ $complaint->department }}</td>
-        <td>{{ $complaint->problem }}</td>
-        <td>{{ $complaint->types_of_maintenance }}</td>
-        <td>{{ $complaint->complaint_date }}</td>
-        <td>{{ $complaint->complaint_by }}</td>
-        <td>{{ $complaint->maintenance_require }}</td>
-        <td>{{ $complaint->edp_maintenance_supervisor }}</td>
-        <td>{{ $complaint->maintained_by }}</td>
-        <td>{{ $complaint->completed_at }}</td>
-        <td>{{ $complaint->remark }}</td>
+        <td>{{ $nvr->location }}</td>
+        <td>{{ $nvr->ip }}</td>
+        <td>{{ $nvr->channel }}</td>
+        <td>{{ $nvr->hdd }}</td>
+        <td>{{ $nvr->storage }}</td>
+        <td>{{ $nvr->two_tb }}</td>
+        <td>{{ $nvr->six_tb }}</td>
+        <td>{{ $nvr->eight_tb }}</td>
+        <td>{{ $nvr->ten_tb }}</td>
+        <td>{{ $nvr->remark }}</td>
         
     
         <td>
-        <form action="{{ route('nvr.destroy' , $complaint->id) }}" method="Post">
+        <form action="{{ route('nvr.destroy' , $nvr->id) }}" method="Post">
           @csrf
-          <a class="btn btn-primary" href="{{ route('nvr.edit', $complaint->id) }}">Edit</a>
+          {{-- <a class="btn btn-primary" href="{{ route('nvr.edit', $nvr->id) }}">Edit</a> --}}
 
          
           @method('DELETE')
-          <button type="submit" class="btn btn-danger">Delete</button>
+          <button type="submit" class="btn btn-danger ">Delete</button>
+
+          <a class="btn btn-primary" href="{{ route('nvr.hpe', $nvr->id) }}">Switch</a>
+
+          <a class="btn btn-primary" href="{{ route('nvr.cctv', $nvr->id) }}">CCTV</a>
+
         </form>
 
         </td>
@@ -82,7 +91,14 @@ $i = 0;
       
     </tbody>
     @endforeach
-  </table> --}}
+  </table> 
+
+
+
+
+
+
+
 
 </div>
 @endsection

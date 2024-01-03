@@ -20,10 +20,16 @@ $i = 0;
        
         <a class="btn btn-primary" role="button" href="{{ route('complaints.create') }}">Do Complaint</a>
       
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
         <a class="btn btn-secondary"  role="button" href="{{ route('complaints.index')}}">Complainted</a>
       
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
         <a class="btn btn-success"  role="button" href="{{ route('export.complaints') }}"> Export Complaint Data </a>
        
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
         <a class="btn btn-success"  role="button" href="{{ route('complaint.upload') }}"> Import Complaints Data </a>
 
        
@@ -32,11 +38,11 @@ $i = 0;
 
 
 
-<table class="table table-bordered table-hover  table-dark text-center ">
+<table class="table table-bordered  table-striped-columns">
     
         
   
-    <thead>
+    <thead class="text-center">
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Department</th>
@@ -55,7 +61,7 @@ $i = 0;
     </thead>
     @foreach ($complaints as $complaint)
     <tbody>
-      <tr>
+      <tr class="text-center">
         <th scope="row">{{ ++$i }}</th>
         <td>{{ $complaint->department }}</td>
         <td>{{ $complaint->problem }}</td>

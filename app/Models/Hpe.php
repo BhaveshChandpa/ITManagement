@@ -6,47 +6,38 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use App\Models\Hpe;
 
-class Nvr extends Model
+class Hpe extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [ 
+
         'id',
         'location',
         'ip',
-        'channel',
-        'hdd',
-        'storage',
-        'two_tb',
-        'six_tb',
-        'eight_tb',
-        'ten_tb',
+        'total_port',
+        'computer',
+        'cctv',
+        'uplink',
         'remark',
-        'hpe_id',
+        
     ];
 
+    public function nvrs(){
 
-
-    public function hpe(){
-
-        return $this->BelongsTo(Hpe::class);
+        return $this->hasMany(Nvr::class);
     }
 
-    
     public function cctvs(){
 
         return $this->hasMany(Cctv::class);
     }
 
 
-    protected $hidden = [
-
-        'created_at',
-        'updated_at',
-    ];
-
-}
+    protected $hidden = 
+        [ 
+            'created_at',
+            'updated_at',
+        ];
+}   

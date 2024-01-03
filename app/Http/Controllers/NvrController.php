@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Nvr;
 use Illuminate\Http\Request;
+use App\Models\Cctv;
+use App\Models\Hpe;
 
 class NvrController extends Controller
 {
@@ -12,9 +14,14 @@ class NvrController extends Controller
      */
     public function index()
     {
-        //
+   
+        $nvr = Nvr::all();
+        return view('nvr.index', compact('nvr'));
 
-        return view("nvr.index");
+
+
+        // dd($data->type);                                
+        // return view("nvr.index");
     }
 
     /**
@@ -22,7 +29,7 @@ class NvrController extends Controller
      */
     public function create()
     {
-        //
+        return view("nvr.create");
     }
 
     /**
@@ -63,5 +70,26 @@ class NvrController extends Controller
     public function destroy(Nvr $nvr)
     {
         //
+    }
+
+
+
+    public function cctv($id){
+
+        $nvr = Nvr::find($id)->cctvs;
+       
+       
+        return view('nvr.cctv', compact('nvr'));  
+
+    }
+
+
+    public function hpe($id){
+
+        $hpe = Nvr::find($id)->hpe;
+
+        // dd($nvr->uplink);
+
+        return view('nvr.hpe', compact('hpe'));
     }
 }

@@ -14,10 +14,12 @@ return new class extends Migration
     {
         Schema::create('cctvs', function (Blueprint $table) {
             $table->id();
-            // $table->string('location');
-            // $table->ipAddress('ip');
-            // $table->enum('type',[CctvType::DOME, CctvType::BULLET]);
-            // $table->string('remark');
+            $table->string('location');
+            $table->ipAddress('ip');
+            $table->enum('type',[CctvType::DOME, CctvType::BULLET]);
+            $table->string('remark');
+            $table->foreignId('hpe_id')->constrained();                                                                                                                                                                             
+            $table->foreignId('nvr_id')->constrained();                                                                                                                                                                             
             $table->timestamps();
         });
     }
@@ -28,5 +30,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('cctvs');
+        Schema::dropIfExists('hpes');
+        Schema::dropIfExists('nvrs');
     }
 };

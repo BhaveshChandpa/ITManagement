@@ -26,11 +26,6 @@
         @method('PUT')
 
     
-        <div class="mb-3 mt-3 col-4">
-          <label for="number">No</label>
-          <input type="typeNumber" name="no" value="{{ $complaint->no }}" class="form-control" id="number">
-
-        </div>
 
 
         <div class="mb-3 mt-3 col-4">

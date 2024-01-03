@@ -15,8 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('complaints', function (Blueprint $table) {
-            $table->id();
-            $table->integer('no');
+            $table->increments('id');
             $table->string("department");
             $table->string('problem');
             $table->enum("types_of_maintenance", [MaintenanceType::REPAIR, MaintenanceType::NEW]);

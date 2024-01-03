@@ -36,16 +36,7 @@
         @csrf
 
 
-         
-        <div class="mb-3 mt-3 col-4">
-          
-          <label for="no">No</label>
-          <input type="typeNumber" name="no" class="form-control" id="no">
-            @error('no')
-               <span class="alert-danger">{{ $message }}</span>
-            @enderror
-        </div>
-
+     
 
         <div class="mb-3 mt-3 col-4">
           <label for="department">Department</label>

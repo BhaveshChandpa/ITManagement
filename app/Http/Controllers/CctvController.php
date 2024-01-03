@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cctv;
 use Illuminate\Http\Request;
+use App\Models\Nvr;
 
 class CctvController extends Controller
 {
@@ -14,7 +15,8 @@ class CctvController extends Controller
     {
         //
 
-        return view("nvr.index");
+      $cctv = Cctv::all();
+      return view("cctv.index", compact("cctv"));
     }
 
     /**
@@ -23,6 +25,8 @@ class CctvController extends Controller
     public function create()
     {
         //
+
+        return view('cctv.create');
     }
 
     /**
@@ -31,6 +35,10 @@ class CctvController extends Controller
     public function store(Request $request)
     {
         //
+
+        $cctv = Cctv::create($request->all());
+
+        return redirect()->route('cctv.index');
     }
 
     /**
@@ -63,5 +71,26 @@ class CctvController extends Controller
     public function destroy(Cctv $cctv)
     {
         //
+    }
+
+    public function hpe($id){
+
+        $hpe = Cctv::find($id)->hpe;
+
+        // $cctv->hpe->ip;
+
+        // dd($cctv);
+        return view('cctv.hpe', compact('hpe'));
+    }
+
+
+    public function nvr($id){
+
+        $nvr = Cctv::find($id)->nvr;
+
+        // $cctv->hpe->ip;
+
+        // dd($cctv);
+        return view('cctv.nvr', compact('nvr'));
     }
 }

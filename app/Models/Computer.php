@@ -9,8 +9,21 @@ class computer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['username', 'ip', 'os_name', 'remote_name', 'pc_passwd', 'shed'];
+    protected $fillable = [
+        'username',
+        'ip', 
+        'os_name', 
+        'remote_name', 
+        'pc_passwd', 
+        'shed'
+    ];
 
 
-    protected $hidden = ['id', 'created_at', 'updated_at'];
+    protected $hidden = [
+
+        'id', 
+        'created_at', 
+        'updated_at'
+    
+    ];
 }

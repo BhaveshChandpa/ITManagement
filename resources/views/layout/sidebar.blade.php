@@ -41,7 +41,7 @@
 
                 <div class="collapse" id="switchh" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('switch.index')}}">All Switch</a>
+                        <a class="nav-link" href="{{ route('hpe.index')}}">All Switch</a>
                         {{-- <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> --}}
                     </nav>
                 </div>

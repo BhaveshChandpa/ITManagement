@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Switchh;
+use App\Models\Hpe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class SwitchhController extends Controller
 {
@@ -13,8 +15,8 @@ class SwitchhController extends Controller
     public function index()
     {
         //
-        // $switches = Switchh::all();
-        return view('switchh.index');
+        $hpe = Hpe::all();
+        return view('hpe.index', compact('hpe'));
     }
 
     /**
@@ -23,6 +25,7 @@ class SwitchhController extends Controller
     public function create()
     {
         //
+        return view('hpe.create');
     }
 
     /**
@@ -36,7 +39,7 @@ class SwitchhController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Switchh $switchh)
+    public function show(Hpe $hpe)
     {
         //
     }
@@ -44,7 +47,7 @@ class SwitchhController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Switchh $switchh)
+    public function edit(Hpe $hpe)
     {
         //
     }
@@ -52,7 +55,7 @@ class SwitchhController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Switchh $switchh)
+    public function update(Request $request, Hpe $hpe)
     {
         //
     }
@@ -60,8 +63,27 @@ class SwitchhController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Switchh $switchh)
+    public function destroy(Hpe $hpe)
     {
         //
+    }
+
+    public function nvr($id){
+
+        $nvr = Hpe::find($id)->nvrs;
+
+
+      
+
+
+        return view('hpe.nvr', compact('nvr'));
+    }
+
+    public function cctv($id){
+
+        $cctv = Hpe::find($id)->cctvs;
+
+
+        return view('hpe.cctv', compact('cctv'));
     }
 }

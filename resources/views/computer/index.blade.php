@@ -6,9 +6,13 @@
         
         <a class="btn btn-primary" role="button" href="{{ route('computer.create') }}">Do Complaint</a>
             
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
         <a class="btn btn-secondary"  role="button" href="{{ route('computer.index')}}">Complainted</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
 
         <a class="btn btn-success"  role="button" href="{{ route('export.computers') }}"> Export Computer Data </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
         
         <a class="btn btn-success"  role="button" href="{{ route('computer.upload') }}"> Import Computer Data </a>
 
@@ -18,11 +22,11 @@
 
         <br>
    
-        <table class="table table-bordered table-hover  table-dark text-center ">
+        <table class="table table-bordered  table-striped-columns">
         
             
       
-            <thead>
+            <thead class="text-center">
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">UserName</th>
@@ -34,9 +38,9 @@
                 <th scope="col">Action</th>
               </tr>
             </thead>
-            @foreach ($computers as $computer)
+            @foreach ( $computers as $computer )
             <tbody>
-              <tr>
+              <tr class="text-center">
                 <th scope="row">{{ $computer->id }}</th>
                 <td>{{ $computer->username }}</td>
                 <td>{{ $computer->ip }}</td>
